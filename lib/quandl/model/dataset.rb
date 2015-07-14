@@ -3,9 +3,6 @@ module Quandl
     include Quandl::Operations::Get
     include Quandl::Operations::List
 
-    # belongs_to :database
-    # has_many :datas
-
     def self.get(database_code, dataset_code, options = {})
       super(dataset_code, { params: { database_code: database_code } }.deep_merge(options))
     end
@@ -16,8 +13,12 @@ module Quandl
     end
     # rubocop:enable Style/AccessorMethodName
 
-    # # actual data
-    # def data(opts={})
-    # end
+    def database
+      Quandl::Database.get(database_code)
+    end
+
+    def data
+      Quandl::Data(params: { dataset_id: id })
+    end
   end
 end
