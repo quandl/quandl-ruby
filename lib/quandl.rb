@@ -1,5 +1,6 @@
 require 'active_support/concern'
 require 'active_support/core_ext/hash'
+require 'active_support/core_ext/object/to_query'
 require 'rest-client'
 require 'json'
 
@@ -16,3 +17,4 @@ require_relative 'quandl/model/list'
 require_relative 'quandl/model/data'
 require_relative 'quandl/model/database'
 require_relative 'quandl/model/dataset'
+require_relative 'quandl/errors/api_error'
