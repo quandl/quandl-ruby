@@ -1,5 +1,7 @@
 require 'active_support/concern'
 require 'active_support/core_ext/hash'
+require 'rest-client'
+require 'json'
 
 require_relative 'quandl/version'
 
