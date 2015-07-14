@@ -1,7 +1,7 @@
 module Quandl
   class Connection
-    def self.request(http_verb, url, options = {})
-      puts url
+    def self.request(_http_verb, _url, _options = {})
+      # puts url
     end
   end
 end

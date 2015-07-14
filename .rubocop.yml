@@ -1,0 +1,10 @@
+AllCops:
+  RunRailsCops: true
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+Style/Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 180
+Metrics/MethodLength:
+  Max: 40

@@ -4,8 +4,8 @@ module Quandl
     include Quandl::Operations::List
     # has_many :datasets, path: ->(database) { "/datasets/#{database.code}" }
 
-    def get(database_code, daquery = nil)
-      Dataset.where(database_code: self.database_code, z: query)
+    def get(_database_code, _daquery = nil)
+      Dataset.where(database_code: database_code, z: query)
     end
 
     # metadata

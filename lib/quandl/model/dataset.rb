@@ -10,11 +10,11 @@ module Quandl
       super(dataset_code, { params: { database_code: database_code } }.deep_merge(options))
     end
 
-    private
-
+    # rubocop:disable Style/AccessorMethodName
     def self.get_path
-      "#{self.name.demodulize.pluralize.underscore}/:database_code/:id"
+      "#{name.demodulize.pluralize.underscore}/:database_code/:id"
     end
+    # rubocop:enable Style/AccessorMethodName
 
     # # actual data
     # def data(opts={})

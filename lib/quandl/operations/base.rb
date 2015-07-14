@@ -13,7 +13,11 @@ module Quandl
         end
 
         def default_path
-          "#{self.name.demodulize.pluralize.underscore}/:id"
+          "#{lookup_key}/:id"
+        end
+
+        def lookup_key
+          name.demodulize.pluralize.underscore
         end
       end
     end
