@@ -1,13 +1,20 @@
 module Quandl
   class Dataset < ModelBase
-    belongs_to :database, foreign_key: 'database_code'
+    include Quandl::Operations::Get
+    include Quandl::Operations::List
 
-    # metadata
-    # def get(database_code, dataset_code, opts={})
-    # end
+    # belongs_to :database
+    # has_many :datas
 
-    # def all(opts={})
-    # end
+    def self.get(database_code, dataset_code, options = {})
+      super(dataset_code, { params: { database_code: database_code } }.deep_merge(options))
+    end
+
+    private
+
+    def self.get_path
+      "#{self.name.demodulize.pluralize.underscore}/:database_code/:id"
+    end
 
     # # actual data
     # def data(opts={})

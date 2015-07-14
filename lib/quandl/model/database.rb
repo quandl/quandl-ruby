@@ -1,6 +1,12 @@
 module Quandl
   class Database < ModelBase
-    has_many :datasets, path: ->(database) { "/datasets/#{database.code}", }
+    include Quandl::Operations::Get
+    include Quandl::Operations::List
+    # has_many :datasets, path: ->(database) { "/datasets/#{database.code}" }
+
+    def get(database_code, daquery = nil)
+      Dataset.where(database_code: self.database_code, z: query)
+    end
 
     # metadata
     # def get(database_code, opts={})

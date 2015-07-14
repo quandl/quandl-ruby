@@ -1,10 +1,15 @@
 module Quandl
   class ModelBase
-    include Her::Model
-    parse_root_in_json true, format: :active_model_serializers
-
     class << self
       attr_accessor :token
+    end
+
+    def initialize(id, options = {})
+
+    end
+
+    def method_missing(method_name, value)
+      @raw_data[method_name] if @raw_data.key?(method_name)
     end
   end
 end

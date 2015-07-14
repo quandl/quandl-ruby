@@ -1,11 +1,15 @@
-require 'her'
-require_relative 'quandl/middleware/token_authentication'
-require_relative 'quandl/setup'
+require 'active_support/concern'
+require 'active_support/core_ext/hash'
+
 require_relative 'quandl/version'
+
+require_relative 'quandl/connection'
+
+require_relative 'quandl/operations/base'
+require_relative 'quandl/operations/list'
+require_relative 'quandl/operations/get'
+
 require_relative 'quandl/model/base'
 require_relative 'quandl/model/data'
 require_relative 'quandl/model/database'
 require_relative 'quandl/model/dataset'
-
-module Quandl
-end
