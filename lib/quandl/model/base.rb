@@ -4,7 +4,7 @@ module Quandl
       attr_accessor :token
     end
 
-    def initialize(_id, _options = {})
+    def initialize(id, options = {})
     end
 
     def method_missing(method_name, _value)
