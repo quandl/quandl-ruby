@@ -1,12 +1,10 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'quandl/version'
+require_relative 'lib/quandl/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "quandl"
   spec.version       = Quandl::VERSION
-  spec.authors       = ["Clement Leung"]
+  spec.authors       = ["Clement Leung", "Matthew Basset"]
   spec.email         = ["clement@quandl.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}

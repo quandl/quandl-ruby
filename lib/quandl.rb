@@ -8,5 +8,4 @@ require_relative 'quandl/model/database'
 require_relative 'quandl/model/dataset'
 
 module Quandl
-  # Your code goes here...
 end

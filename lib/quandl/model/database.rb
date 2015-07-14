@@ -1,6 +1,6 @@
 module Quandl
   class Database < ModelBase
-    # has many datasets
+    has_many :datasets, path: ->(database) { "/datasets/#{database.code}", }
 
     # metadata
     # def get(database_code, opts={})

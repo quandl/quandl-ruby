@@ -1,6 +1,6 @@
 module Quandl
   class Dataset < ModelBase
-    # belongs to a database
+    belongs_to :database, foreign_key: 'database_code'
 
     # metadata
     # def get(database_code, dataset_code, opts={})
