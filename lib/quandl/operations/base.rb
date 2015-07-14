@@ -5,8 +5,8 @@ module Quandl
 
       class_methods do
         def constructed_path(path, params = {})
-          sub_params = Hash[params.map {|k, v| [":#{k}", v] }]
-          sub_params = { id: nil }.merge(sub_params)
+          params ||= {}
+          sub_params = Hash[{ id: nil }.merge(params).map {|k, v| [':' + k.to_s, v] }]
           params.delete_if {|key, value| path =~ /:#{key}/ }
 
           path = path.dup

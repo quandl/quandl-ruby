@@ -3,8 +3,8 @@ module Quandl
     include Quandl::Operations::Get
     include Quandl::Operations::List
 
-    def datasets(query, options = {})
-      Quandl::Dataset.all({ params: { query: query }}.deep_merge(options))
+    def datasets(query = nil, options = {})
+      Quandl::Dataset.all({ params: { query: query, per_page: 25, page: 1 }}.deep_merge(options))
     end
 
     def bulk_download_url(options = {})

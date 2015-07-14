@@ -1,14 +1,12 @@
 module Quandl
   class ModelBase
-    class << self
-      attr_accessor :token
+    def initialize(data)
+      @raw_data = data
     end
 
-    def initialize(id, options = {})
-    end
-
-    def method_missing(method_name, _value)
-      @raw_data[method_name] if @raw_data.key?(method_name)
+    def method_missing(method_name, *args, &block)
+      return @raw_data[method_name.to_s] if @raw_data.key?(method_name.to_s)
+      super
     end
   end
 end

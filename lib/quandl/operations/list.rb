@@ -6,8 +6,8 @@ module Quandl
 
       class_methods do
         def all(options = {})
-          meta, response_body = Quandl::Connection.request(:get, constructed_path(list_path, options[:params]), options)
-          Quandl::List.new(self, response_body[lookup_key], meta)
+          response, response_data = Quandl::Connection.request(:get, constructed_path(list_path, options[:params]), options)
+          Quandl::List.new(self, response_data[lookup_key], response_data['meta'])
         end
 
         def list_path

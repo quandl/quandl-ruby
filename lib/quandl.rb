@@ -12,6 +12,7 @@ require_relative 'quandl/operations/list'
 require_relative 'quandl/operations/get'
 
 require_relative 'quandl/model/base'
+require_relative 'quandl/model/list'
 require_relative 'quandl/model/data'
 require_relative 'quandl/model/database'
 require_relative 'quandl/model/dataset'

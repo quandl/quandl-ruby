@@ -7,7 +7,7 @@ module Quandl
       class_methods do
         def get(id, options = {})
           response, response_data = Quandl::Connection.request(:get, constructed_path(get_path, { id: id }.merge(options[:params])), options)
-          new(response.body)
+          new(response_data)
         end
 
         # rubocop:disable Style/AccessorMethodName
