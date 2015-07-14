@@ -5,14 +5,13 @@ module Quandl
 
       class_methods do
         def constructed_path(path, params = {})
-          new_path = path.gsub(/:id/, params.delete(:id).to_s)
-          params.each do |key, value|
-            return unless new_path =~ /:#{key}/
+          sub_params = Hash[params.map {|k, v| [":#{k}", v] }]
+          sub_params = { id: nil }.merge(sub_params)
+          params.delete_if {|key, value| path =~ /:#{key}/ }
 
-            new_path.gsub!(/:#{key}/, value)
-            params.delete(key)
-          end
-          new_path
+          path = path.dup
+          path.gsub!(Regexp.union(sub_params.keys), sub_params)
+          path
         end
 
         def default_path
