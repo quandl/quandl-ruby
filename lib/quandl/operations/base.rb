@@ -4,10 +4,13 @@ module Quandl
       extend ActiveSupport::Concern
 
       class_methods do
-        def constructed_path(path, options = {})
-          new_path = path.gsub(/:id/, options.delete(:id).to_s)
-          options.each do |key, value|
+        def constructed_path(path, params = {})
+          new_path = path.gsub(/:id/, params.delete(:id).to_s)
+          params.each do |key, value|
+            return unless new_path =~ /:#{key}/
+
             new_path.gsub!(/:#{key}/, value)
+            params.delete(key)
           end
           new_path
         end
