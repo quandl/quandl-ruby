@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    quandl (0.1.0)
+    quandl (3.0.0)
       activesupport (>= 4.2.3)
       json (~> 1.8.3)
       rest-client (~> 1.8.0)
