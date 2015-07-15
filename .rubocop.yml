@@ -1,5 +1,4 @@
 AllCops:
-  RunRailsCops: true
   DisplayCopNames: true
   DisplayStyleGuide: true
 Style/Documentation:
@@ -8,3 +7,9 @@ Metrics/LineLength:
   Max: 180
 Metrics/MethodLength:
   Max: 40
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
