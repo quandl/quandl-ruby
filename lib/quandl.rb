@@ -8,6 +8,7 @@ require_relative 'quandl/version'
 
 require_relative 'quandl/connection'
 
+require_relative 'quandl/config'
 require_relative 'quandl/operations/base'
 require_relative 'quandl/operations/list'
 require_relative 'quandl/operations/get'

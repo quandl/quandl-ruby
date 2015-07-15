@@ -1,23 +1,15 @@
 # based off of stripe gem: https://github.com/stripe/stripe-ruby
 module Quandl
   class Connection
-    class << self
-      attr_accessor :api_key, :api_base, :api_version
-    end
-
-    @api_base = 'https://www.quandl.com/api/v3'
-
     def self.request(http_verb, url, options = {})
       params = options.delete(:params) || {}
       headers = options.delete(:headers) || {}
       accept_value = 'application/json'
-      accept_value += ", application/vnd.quandl+json;version=#{api_version}" if api_version
+      accept_value += ", application/vnd.quandl+json;version=#{Config.api_version}" if Config.api_version
       headers = { accept: accept_value }.merge(headers)
-      headers = { x_api_token: api_key }.merge(headers) if api_key
+      headers = { x_api_token: Config.api_key }.merge(headers) if Config.api_key
 
-      request_url = api_base + '/' + url
-
-      binding.pry
+      request_url = Config.api_base + '/' + url
 
       case http_verb
       when :get, :head, :delete
