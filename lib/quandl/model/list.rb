@@ -18,7 +18,7 @@ module Quandl
     end
 
     def to_csv
-      fail(StandardError, 'No values to export') if @values.empty?
+      fail(QuandlError, 'No values to export') if @values.empty?
 
       CSV.generate do |csv|
         csv << @values.first.column_names
