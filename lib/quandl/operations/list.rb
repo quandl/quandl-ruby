@@ -7,7 +7,11 @@ module Quandl
       class_methods do
         def all(options = {})
           response, response_data = Quandl::Connection.request(:get, constructed_path(list_path, options[:params]), options)
-          Quandl::List.new(self, response_data[lookup_key], response_data['meta'])
+          create_list_from_response(response, response_data)
+        end
+
+        def create_list_from_response(_response, data)
+          Quandl::List.new(self, data[lookup_key], data['meta'])
         end
 
         def list_path
