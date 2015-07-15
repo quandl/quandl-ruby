@@ -3,9 +3,11 @@ require 'active_support/core_ext/hash'
 require 'active_support/core_ext/object/to_query'
 require 'rest-client'
 require 'json'
+require 'csv'
 
 require_relative 'quandl/version'
 
+require_relative 'quandl/util'
 require_relative 'quandl/connection'
 
 require_relative 'quandl/operations/base'
