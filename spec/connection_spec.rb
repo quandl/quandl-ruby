@@ -92,6 +92,32 @@ describe 'Connection' do
       end
     end
   end
+
+  describe 'building request options' do
+    let(:url) { 'databases' }
+    let(:http_verb) { :get }
+    let(:headers) { { request_source: 'public_api' } }
+    let(:params) { { 'per_page' => '10', 'page' => '2' } }
+    let(:expected_headers) do
+      {
+        request_source: 'public_api',
+        accept: 'application/json, application/vnd.quandl+json;version=2015-04-09',
+        x_api_token: 'api_token'
+      }
+    end
+    before do
+      stub_request(:any, 'https://www.quandl.com/api/v3/databases')
+      Quandl::Config.api_key = 'api_token'
+      Quandl::Config.api_version = '2015-04-09'
+    end
+
+    it 'builds the request' do
+      expect(Quandl::Connection).to receive(:execute_request)
+        .with(url: 'https://www.quandl.com/api/v3/databases?page=2&per_page=10',
+              headers: expected_headers, method: :get).and_return('{}')
+      Quandl::Connection.request(http_verb, url, params: params, headers: headers)
+    end
+  end
 end
 
 def build_quandl_error(quandl_error, message = nil)
