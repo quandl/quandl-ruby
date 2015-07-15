@@ -1,3 +1,4 @@
+# based off of stripe gem: https://github.com/stripe/stripe-ruby
 module Quandl
   class Connection
     class << self
@@ -16,11 +17,13 @@ module Quandl
 
       request_url = api_base + '/' + url
 
+      binding.pry
+
       case http_verb
       when :get, :head, :delete
         request_url = request_url + '?' + params.to_query
       else
-        put "TODO: implement"
+        put 'TODO: implement PUT/POST'
       end
 
       request_opts = { url: request_url, headers: headers, method: http_verb }
@@ -28,19 +31,16 @@ module Quandl
       begin
         response = execute_request(request_opts)
       rescue RestClient::ExceptionWithResponse => e
-        binding.pry
         if e.response
-          #handle_api_error(e.response)
+          handle_api_error(e.response)
         else
-          #handle_restclient_error(e, api_base_url)
+          raise
         end
       end
 
-      binding.pry
-
       response_data = parse(response)
 
-      return response, response_data
+      [response, response_data]
     end
 
     def self.execute_request(opts)
@@ -48,14 +48,48 @@ module Quandl
     end
 
     def self.parse(response)
-      response_data = JSON.parse(response)
+      JSON.parse(response)
       rescue JSON::ParserError
-        raise general_api_error(response.code, response.body)
+        raise general_error(response.code, response.body)
     end
 
-    def self.general_api_error(rcode, rbody)
-      APIError.new("Invalid response object from API: #{rbody.inspect} " +
+    def self.general_error(rcode, rbody)
+      QuandlError.new("Invalid response object from API: #{rbody.inspect} " \
                    "(HTTP response code was #{rcode})", rcode, rbody)
+    end
+
+    def self.handle_api_error(resp)
+      error_body = parse(resp.body)
+      code = error_body['quandl_error']['code']
+      message = error_body['quandl_error']['message']
+      code_letter = code.match(/QE([a-zA-Z])x/).captures.first
+
+      case code_letter
+      when 'L'
+        raise LimitExceededError.new(message, resp.code, resp.body, error_body,
+                                     resp.headers, code)
+      when 'M'
+        raise InternalServerError.new(message, resp.code, resp.body, error_body,
+                                      resp.headers, code)
+      when 'A'
+        raise AuthenticationError.new(message, resp.code, resp.body, error_body,
+                                      resp.headers, code)
+      when 'P'
+        raise ForbiddenError.new(message, resp.code, resp.body, error_body,
+                                 resp.headers, code)
+      when 'S'
+        raise InvalidRequestError.new(message, resp.code, resp.body, error_body,
+                                      resp.headers, code)
+      when 'C'
+        raise NotFoundError.new(message, resp.code, resp.body, error_body,
+                                resp.headers, code)
+      when 'X'
+        raise ServiceUnavailableError.new(message, resp.code, resp.body,
+                                          error_body, resp.headers, code)
+      else
+        raise QuandlError.new(message, resp.code, resp.body, error_body,
+                              resp.headers, code)
+      end
     end
   end
 end
