@@ -1,0 +1,6 @@
+ruby_version: 2.2.2
+bundler_version: 1.10.5
+tests:
+    - bundle exec rubocopter --commit origin/master
+test_pattern:
+  - spec/**_spec.rb
