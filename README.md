@@ -2,9 +2,13 @@
 
 *Copyright Quandl 2015*
 
-The official gem for all your data needs! The Quandl client can be used to interact with the latest version of the [Quandl restful API](https://www.quandl.com/tools/api). Currently V3.
+The official ruby gem for all your data needs! The Quandl client can be used to interact with the latest version of the [Quandl restful API](https://www.quandl.com/tools/api).
 
-Note that v1 and v2 of the REST API are deprecated and we will be moving over all functionality to V3. During this transitionary period you can continue to use the old client here: https://rubygems.org/gems/quandl_client
+## Deprecation of old package
+
+With the release of our v3 API we are officially deprecating version 2 of the `quandl_client` ruby gem. We have re-written the package from the group up and will be moving forward with a 1.x.x package with the name of `quandl` that will rely on version 3 of our restful api. During this transitional period you can continue to use the old package here: 
+
+https://rubygems.org/gems/quandl_client
 
 
 ## Installation
@@ -152,7 +156,8 @@ Lists also function as arrays and can be iterated through. Note however that usi
 
 ```ruby
 require 'quandl'
-databases = Quandl::Database.all.each { |d| puts d.database_code }
+databases = Quandl::Database.all
+databases.each { |d| puts d.database_code }
 => ... print database codes ...
 databases.more_results?
 => true
@@ -178,7 +183,17 @@ databases = Quandl::Database.all.to_csv
 => "Id,Name,Database Code,Description,Datasets Count,Downloads,Premium,Image,Bundle Ids,Plan ...
 ```
 
+## Questions/Comments
+
+For any questions, comments or inquires about this package please open a ticket on the github repo or email the development team at <dev@quandl.com>. For any questions about data provided by the API please email connect@quandl.com
+
 ## Additional Links
 
 * [Quandl](https://www.quandl.com)
 * [Quandl Tools](https://www.quandl.com/tools/api)
+* [API Docs](https://www.quandl.com/docs)
+
+## License
+
+[MIT License](http://opensource.org/licenses/MIT)
+
