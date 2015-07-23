@@ -6,7 +6,7 @@ The official ruby gem for all your data needs! The Quandl client can be used to 
 
 ## Deprecation of old package
 
-With the release of our v3 API we are officially deprecating version 2 of the `quandl_client` ruby gem. We have re-written the package from the group up and will be moving forward with a 1.x.x package with the name of `quandl` that will rely on version 3 of our restful api. During this transitional period you can continue to use the old package here: 
+With the release of our v3 API we are officially deprecating version 2 of the `quandl_client` ruby gem. We have re-written the package from the ground up and will be moving forward with a 1.x.x package with the name of `quandl` that will rely on version 3 of our restful api. During this transitional period you can continue to use the old package here: 
 
 https://rubygems.org/gems/quandl_client
 
