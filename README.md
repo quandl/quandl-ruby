@@ -1,4 +1,4 @@
-# Quandl Ruby Client
+# Quandl Ruby Client [![Build Status](https://travis-ci.org/quandl/quandl-ruby.svg?branch=master)](https://travis-ci.org/quandl/quandl-ruby)
 
 *Copyright Quandl 2015*
 
