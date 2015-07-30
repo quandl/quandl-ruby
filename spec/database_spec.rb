@@ -45,7 +45,7 @@ describe 'Database' do
       end
       it 'constructs the url' do
         expect(database_instance.bulk_download_url(download_type: 'partial'))
-          .to eq("https://www.quandl.com/api/v3/databases/#{database[:database][:database_code]}/data?auth_token=token&download_type=partial")
+          .to eq("https://www.quandl.com/api/v3/databases/#{database[:database][:database_code]}/data?api_key=token&download_type=partial")
       end
     end
 
