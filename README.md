@@ -1,7 +1,5 @@
 # Quandl Ruby Client [![Build Status](https://travis-ci.org/quandl/quandl-ruby.svg?branch=master)](https://travis-ci.org/quandl/quandl-ruby)
 
-*Copyright Quandl 2015*
-
 The official ruby gem for all your data needs! The Quandl client can be used to interact with the latest version of the [Quandl restful API](https://www.quandl.com/tools/api).
 
 ## Deprecation of old package
@@ -191,7 +189,7 @@ For any questions, comments or inquires about this package please open a ticket 
 
 * [Quandl](https://www.quandl.com)
 * [Quandl Tools](https://www.quandl.com/tools/api)
-* [API Docs](https://www.quandl.com/docs)
+* [API Docs](https://www.quandl.com/docs/api)
 
 ## License
 
