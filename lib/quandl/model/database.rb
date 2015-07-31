@@ -16,7 +16,7 @@ module Quandl
 
       params = {}
       params['download_type'] = options[:download_type] if options[:download_type]
-      params['auth_token'] = Quandl::ApiConfig.api_key if Quandl::ApiConfig.api_key
+      params['api_key'] = Quandl::ApiConfig.api_key if Quandl::ApiConfig.api_key
 
       url += '?' + params.to_query if params.any?
       url
