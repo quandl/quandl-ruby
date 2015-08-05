@@ -5,7 +5,7 @@ module Quandl
       headers = options.delete(:headers) || {}
       accept_value = 'application/json'
       accept_value += ", application/vnd.quandl+json;version=#{ApiConfig.api_version}" if ApiConfig.api_version
-      headers = { accept: accept_value }.merge(headers)
+      headers = { accept: accept_value, request_source: 'ruby', request_source_version: Quandl::VERSION }.merge(headers)
       headers = { x_api_token: ApiConfig.api_key }.merge(headers) if ApiConfig.api_key
 
       request_url = ApiConfig.api_base + '/' + url

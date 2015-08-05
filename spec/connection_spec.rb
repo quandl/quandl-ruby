@@ -108,13 +108,15 @@ describe 'Connection' do
   describe 'building request options' do
     let(:url) { 'databases' }
     let(:http_verb) { :get }
-    let(:headers) { { request_source: 'public_api' } }
+    let(:headers) { { foo_bar: 'foo bar' } }
     let(:params) { { 'per_page' => '10', 'page' => '2' } }
     let(:expected_headers) do
       {
-        request_source: 'public_api',
+        request_source: 'ruby',
+        request_source_version: '1.0.1',
         accept: 'application/json, application/vnd.quandl+json;version=2015-04-09',
-        x_api_token: 'api_token'
+        x_api_token: 'api_token',
+        foo_bar: 'foo bar'
       }
     end
     before(:each) do
