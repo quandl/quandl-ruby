@@ -8,26 +8,32 @@ module Quandl
     end
 
     def bulk_download_url(options = {})
-      options.assert_valid_keys(:download_type, :path_only)
+      options.assert_valid_keys(:params)
 
-      url = self.class.default_path + '/data'
-      url = Quandl::ApiConfig.api_base + '/' + url unless options[:path_only]
+      url = bulk_download_path
+      url = Quandl::ApiConfig.api_base + '/' + url
       url = Quandl::Util.constructed_path(url, id: database_code)
 
-      params = {}
-      params['download_type'] = options[:download_type] if options[:download_type]
+      params = options[:params] || {}
       params['api_key'] = Quandl::ApiConfig.api_key if Quandl::ApiConfig.api_key
+      params['api_version'] = Quandl::ApiConfig.api_version if Quandl::ApiConfig.api_version
 
       url += '?' + params.to_query if params.any?
       url
+    end
+
+    def bulk_download_path
+      path = self.class.default_path + '/data'
+      path = Quandl::Util.constructed_path(path, id: database_code)
+      path
     end
 
     def bulk_download_to_file(file_or_folder_path, options = {})
       fail(QuandlError, 'You must specific a file handle or folder to write to.') if file_or_folder_path.blank?
 
       # Retrieve the location of the bulk download url
-      url = bulk_download_url({ path_only: true }.merge(options))
-      download_url = Quandl::Connection.request(:get, url) do |response, _request, _result, &_block|
+      path = bulk_download_path
+      download_url = Quandl::Connection.request(:get, path, options) do |response, _request, _result, &_block|
         if response.code == 302
           response.headers[:location]
         else
@@ -40,7 +46,9 @@ module Quandl
       # Check that we can write to the directory
       file = file_or_folder_path
       unless file_or_folder_path.is_a?(File)
-        file_or_folder_path = Pathname.new(file_or_folder_path.to_s).join(File.basename(uri.path))
+        if File.directory?(file_or_folder_path)
+          file_or_folder_path = Pathname.new(file_or_folder_path.to_s).join(File.basename(uri.path))
+        end
         file = File.open(file_or_folder_path, 'wb')
       end
 

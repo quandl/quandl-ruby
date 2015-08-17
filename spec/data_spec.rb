@@ -3,6 +3,11 @@ require 'spec_helper'
 describe 'Data' do
   let(:dataset) { build(:dataset, database_code: 'NSE', dataset_code: 'OIL').with_indifferent_access }
   let(:dataset_data) { { dataset_data: build(:dataset_data) }.with_indifferent_access }
+  let(:bad_dataset_data) do
+    d = { dataset_data: build(:dataset_data) }.with_indifferent_access
+    d[:dataset_data][:column_names].pop
+    d
+  end
   let(:data) do
     data = dataset_data[:dataset_data][:data]
     data.map! { |x| [Date.parse(x[0])] + x[1..-1] }
@@ -11,6 +16,16 @@ describe 'Data' do
 
   before(:all) do
     stub_request(:any, %r{https://www.quandl.com/api/v3.*})
+  end
+
+  describe 'data list returns bad data' do
+    before(:each) do
+      expect(Quandl::Connection).to receive(:request).with(:get, 'datasets/NSE/OIL/data', params: {}).and_return([{}, bad_dataset_data])
+    end
+
+    it 'raises InvalidDataError' do
+      expect { Quandl::Data.all(params: { database_code: dataset[:database_code], dataset_code: dataset[:dataset_code] }) }.to raise_error(Quandl::InvalidDataError)
+    end
   end
 
   describe 'list' do

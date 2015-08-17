@@ -3,6 +3,11 @@ module Quandl
     include Quandl::Operations::List
 
     def self.create_list_from_response(_response, data)
+      if data['dataset_data']['data'].length > 0 &&
+         data['dataset_data']['column_names'].length != data['dataset_data']['data'].first.length
+        fail InvalidDataError.new('number of column names does not match number of data points in a row!',
+                                  nil, nil, data)
+      end
       values = data['dataset_data'].delete('data')
       metadata = data['dataset_data']
       Quandl::List.new(self, values, metadata)
