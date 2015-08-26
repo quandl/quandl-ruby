@@ -1,0 +1,11 @@
+### 1.0.2 - 2015-08-18
+
+* Bug fixes
+
+### 1.0.1 - 2015-08-05
+
+* Bug fixes
+
+### 1.0.0 - 2015-07-31
+
+* Upgrade to use v3 of Quandl API

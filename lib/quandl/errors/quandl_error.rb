@@ -53,4 +53,7 @@ module Quandl
 
   class ForbiddenError < QuandlError
   end
+
+  class InvalidDataError < QuandlError
+  end
 end

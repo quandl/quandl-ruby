@@ -113,7 +113,7 @@ describe 'Connection' do
     let(:expected_headers) do
       {
         request_source: 'ruby',
-        request_source_version: '1.0.1',
+        request_source_version: '1.0.2',
         accept: 'application/json, application/vnd.quandl+json;version=2015-04-09',
         x_api_token: 'api_token',
         foo_bar: 'foo bar'

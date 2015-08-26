@@ -42,16 +42,18 @@ describe 'Database' do
     context 'bulk_download_url' do
       before(:each) do
         Quandl::ApiConfig.api_key = 'token'
+        Quandl::ApiConfig.api_version = '2015-04-09'
       end
       it 'constructs the url' do
-        expect(database_instance.bulk_download_url(download_type: 'partial'))
-          .to eq("https://www.quandl.com/api/v3/databases/#{database[:database][:database_code]}/data?api_key=token&download_type=partial")
+        expect(database_instance.bulk_download_url(params: { download_type: 'partial' }))
+          .to eq("https://www.quandl.com/api/v3/databases/#{database[:database][:database_code]}/data?api_key=token&api_version=2015-04-09&download_type=partial")
       end
     end
 
     context 'bulk_download_to_file' do
       before(:each) do
         Quandl::ApiConfig.api_key = 'token'
+        Quandl::ApiConfig.api_version = nil
         stub_request(:any, %r{https://www.quandl.com/.*}).to_return(headers: { 'Location' => 'https://www.blah.com/download/database' }, status: 302)
       end
 
@@ -73,7 +75,7 @@ describe 'Database' do
 
       context 'with 302 return' do
         it 'parses download url from header and download file' do
-          expect(database_instance).to receive(:bulk_download_url).with(path_only: true).and_return('https://www.quandl.com/download')
+          expect(database_instance).to receive(:bulk_download_path).and_return('/download')
           http = Net::HTTP.new('www.blah.com', 443)
           file_object = double('file')
           expect(File).to receive(:open).and_return(file_object)
@@ -82,7 +84,7 @@ describe 'Database' do
           expect(http).to receive(:request_get)
           expect(Net::HTTP).to receive(:new).with('www.quandl.com', 443).and_call_original
           expect(Net::HTTP).to receive(:new).with('www.blah.com', 443).and_return(http)
-          database_instance.bulk_download_to_file('.')
+          database_instance.bulk_download_to_file('.', params: { download_type: 'partial' })
         end
       end
     end
