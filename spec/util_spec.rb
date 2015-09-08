@@ -36,7 +36,7 @@ describe 'Util' do
 
   describe 'constructed_path' do
     let(:path) { '/hello/:foo/world/:id' }
-    let(:params) { { foo: 'bar', id: 1, another: 'a'  } }
+    let(:params) { { foo: 'bar', id: 1, another: 'a' } }
 
     it 'inserts params into path when param key matches' do
       results = Quandl::Util.constructed_path(path, params)
