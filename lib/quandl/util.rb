@@ -1,7 +1,7 @@
 module Quandl
   class Util
     def self.methodize(string)
-      string.gsub(/\./, '').parameterize.gsub(/\-/, '_')
+      string.delete('.').parameterize.tr('-', '_')
     end
 
     def self.convert_to_dates(hash)
