@@ -46,29 +46,29 @@ module Quandl
 
       case code_letter
       when 'L'
-        fail LimitExceededError.new(message, resp.code, resp.body, error_body,
-                                    resp.headers, code)
+        raise LimitExceededError.new(message, resp.code, resp.body, error_body,
+                                     resp.headers, code)
       when 'M'
-        fail InternalServerError.new(message, resp.code, resp.body, error_body,
-                                     resp.headers, code)
+        raise InternalServerError.new(message, resp.code, resp.body, error_body,
+                                      resp.headers, code)
       when 'A'
-        fail AuthenticationError.new(message, resp.code, resp.body, error_body,
-                                     resp.headers, code)
+        raise AuthenticationError.new(message, resp.code, resp.body, error_body,
+                                      resp.headers, code)
       when 'P'
-        fail ForbiddenError.new(message, resp.code, resp.body, error_body,
-                                resp.headers, code)
+        raise ForbiddenError.new(message, resp.code, resp.body, error_body,
+                                 resp.headers, code)
       when 'S'
-        fail InvalidRequestError.new(message, resp.code, resp.body, error_body,
-                                     resp.headers, code)
+        raise InvalidRequestError.new(message, resp.code, resp.body, error_body,
+                                      resp.headers, code)
       when 'C'
-        fail NotFoundError.new(message, resp.code, resp.body, error_body,
-                               resp.headers, code)
+        raise NotFoundError.new(message, resp.code, resp.body, error_body,
+                                resp.headers, code)
       when 'X'
-        fail ServiceUnavailableError.new(message, resp.code, resp.body,
-                                         error_body, resp.headers, code)
+        raise ServiceUnavailableError.new(message, resp.code, resp.body,
+                                          error_body, resp.headers, code)
       else
-        fail QuandlError.new(message, resp.code, resp.body, error_body,
-                             resp.headers, code)
+        raise QuandlError.new(message, resp.code, resp.body, error_body,
+                              resp.headers, code)
       end
     end
   end
