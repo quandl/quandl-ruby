@@ -189,10 +189,6 @@ databases = Quandl::Database.all.to_csv
 => "Id,Name,Database Code,Description,Datasets Count,Downloads,Premium,Image,Bundle Ids,Plan ...
 ```
 
-## Questions/Comments
-
-For any questions, comments or inquires about this package please open a ticket on the github repo or email the development team at <dev@quandl.com>. For any questions about data provided by the API please email connect@quandl.com
-
 ## Additional Links
 
 * [Quandl](https://www.quandl.com)
