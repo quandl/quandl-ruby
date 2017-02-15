@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['test/**/*']
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'activesupport', '>= 4.2.3'
+  spec.add_runtime_dependency 'activesupport', '>= 4.2.1'
   spec.add_runtime_dependency 'rest-client', '~> 1.8.0'
 
   spec.add_development_dependency 'bundler', '~> 1.10'
