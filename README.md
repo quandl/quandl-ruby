@@ -2,13 +2,6 @@
 
 The official ruby gem for all your data needs! The Quandl client can be used to interact with the latest version of the [Quandl RESTful API](https://www.quandl.com/docs/api).
 
-## Deprecation of old package
-
-With the release of our v3 API we are officially deprecating version 2 of the `quandl_client` ruby gem. We have re-written the package from the ground up and will be moving forward with a 1.x.x package with the name of `quandl` that will rely on version 3 of our restful api. During this transitional period you can continue to use the old package here: 
-
-https://rubygems.org/gems/quandl_client
-
-
 ## Installation
 
 ```ruby
@@ -32,7 +25,7 @@ Quandl::ApiConfig.api_version = '2015-04-09'
 
 ### Dataset
 
-Retrieving dataset data can be done in a similar way to Databases. For example to retrieve a dataset use its full code: 
+Retrieving dataset data can be done in a similar way to Databases. For example to retrieve a dataset use its full code:
 
 ```ruby
 require 'quandl'
@@ -198,4 +191,3 @@ databases = Quandl::Database.all.to_csv
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
-

@@ -69,7 +69,7 @@ describe 'Database' do
         end
 
         it 'raises error' do
-          expect { database_instance.bulk_download_to_file('.') }.to raise_error(Quandl::QuandlError)
+          expect { database_instance.bulk_download_to_file('') }.to raise_error(Quandl::QuandlError)
         end
       end
 
