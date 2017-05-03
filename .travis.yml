@@ -6,6 +6,10 @@ rvm:
   - '2.2.4'
   - '2.3.0'
   - '2.4.1'
-script:
+
+before_install:
   - gem install rubocop
+
+script:
+  - rubocop
   - bundle exec rspec spec
