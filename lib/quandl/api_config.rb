@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Quandl
   class ApiConfig
     API_KEY_THREAD_KEY = 'quandl_api_key'.freeze

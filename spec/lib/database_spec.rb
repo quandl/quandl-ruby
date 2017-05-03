@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Database' do
   let(:database) { { database: build(:database, database_code: 'NSE') }.with_indifferent_access }
   let(:databases) { { databases: build_list(:database, 10) } }
@@ -114,3 +115,4 @@ describe 'Database' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

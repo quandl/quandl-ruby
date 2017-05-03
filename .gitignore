@@ -1,7 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-### Ruby template
-.idea/**
+## Ruby template
 *.gem
 *.rbc
 /.config
@@ -17,6 +16,9 @@
 .dat*
 .repl_history
 build/
+
+## Specific to RubyMine
+.idea/**
 
 ## Documentation cache and generated files:
 /.yardoc/

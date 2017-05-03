@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe Quandl::ApiConfig do
   context '.api_base' do
     it 'defaults to Quandl' do
@@ -50,6 +51,7 @@ describe Quandl::ApiConfig do
         end
 
         it 'should allows for a default value' do
+          # rubocop:disable Lint/AmbiguousBlockAssociation
           expect do
             3.times do
               threads << Thread.new do
@@ -66,8 +68,10 @@ describe Quandl::ApiConfig do
           end.not_to change {
             Quandl::ApiConfig.api_key
           }
+          # rubocop:enable Lint/AmbiguousBlockAssociation
         end
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
