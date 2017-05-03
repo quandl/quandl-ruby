@@ -7,7 +7,7 @@ rvm:
   - '2.3.0'
   - '2.4.1'
 
-before_install:
+install:
   - gem install rubocop
 
 script:

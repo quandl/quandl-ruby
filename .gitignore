@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 ### Ruby template
+.idea/**
 *.gem
 *.rbc
 /.config
