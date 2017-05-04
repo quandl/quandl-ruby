@@ -9,9 +9,8 @@ rvm:
 
 install:
   - gem install rubocop
-  - gem install rspec
   - bundle install
 
 script:
   - rubocop
-  - bundle exec rspec spec
+  - rspec spec

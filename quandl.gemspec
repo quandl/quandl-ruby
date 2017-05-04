@@ -20,11 +20,10 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['test/**/*']
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'activesupport', '>= 4.2.3'
+  spec.add_runtime_dependency 'activesupport', '~> 4.2.8'
   spec.add_runtime_dependency 'rest-client', '~> 2.0.2'
   spec.add_runtime_dependency 'json', '~> 2.1.0'
 
-  spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'webmock', '~> 3.0.1'
   spec.add_development_dependency 'factory_girl', '~> 4.5.0'
