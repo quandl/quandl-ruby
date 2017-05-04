@@ -1,3 +1,7 @@
+###1.0.4 - 2017-03-04
+
+* Update gem dependencies 
+
 ### 1.0.3 - 2015-09-16
 
 * Add in better support for threaded environments that spawn main code after the api-key has been set.
