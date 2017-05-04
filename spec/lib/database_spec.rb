@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Database' do
   let(:database) { { database: build(:database, database_code: 'NSE') }.with_indifferent_access }
   let(:databases) { { databases: build_list(:database, 10) } }
@@ -69,7 +70,7 @@ describe 'Database' do
         end
 
         it 'raises error' do
-          expect { database_instance.bulk_download_to_file('.') }.to raise_error(Quandl::QuandlError)
+          expect { database_instance.bulk_download_to_file('') }.to raise_error(Quandl::QuandlError)
         end
       end
 
@@ -114,3 +115,4 @@ describe 'Database' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'quandl/version'
@@ -19,15 +20,11 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['test/**/*']
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'activesupport', '>= 4.2.3'
-  spec.add_runtime_dependency 'rest-client', '~> 1.8.0'
-  spec.add_runtime_dependency 'json', '~> 1.8.3'
+  spec.add_runtime_dependency 'activesupport', '~> 4.2.8'
+  spec.add_runtime_dependency 'rest-client', '~> 2.0.2'
+  spec.add_runtime_dependency 'json', '~> 2.1.0'
 
-  spec.add_development_dependency 'bundler', '~> 1.10'
-  spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'pry-byebug', '~> 3.1.0'
-  spec.add_development_dependency 'webmock', '~> 1.21.0'
+  spec.add_development_dependency 'webmock', '~> 3.0.1'
   spec.add_development_dependency 'factory_girl', '~> 4.5.0'
-  spec.add_development_dependency 'rubocopter'
 end

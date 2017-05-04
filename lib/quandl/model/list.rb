@@ -10,7 +10,7 @@ module Quandl
     end
 
     def more_results?
-      fail(QuandlError, "#{@klass} does not support pagination yet") if !@meta.key?('total_pages') && !@meta.key?('current_page')
+      raise(QuandlError, "#{@klass} does not support pagination yet") if !@meta.key?('total_pages') && !@meta.key?('current_page')
       @meta['total_pages'] > @meta['current_page']
     end
 
@@ -19,7 +19,7 @@ module Quandl
     end
 
     def to_csv
-      fail(QuandlError, 'No values to export') if @values.empty?
+      raise(QuandlError, 'No values to export') if @values.empty?
 
       CSV.generate do |csv|
         csv << @values.first.column_names
@@ -35,11 +35,13 @@ module Quandl
 
     private
 
+    # rubocop:disable MethodMissing
     def method_missing(method_name, *args, &block)
       return @meta[method_name.to_s] if @meta.key?(method_name.to_s)
       return @meta[*args] if method_name.to_s == '[]' && @meta.key?(args[0].to_s)
       return @values.method(method_name).call(*args, &block) if @values.respond_to?(method_name)
       super
     end
+    # rubocop:enable MethodMissing
   end
 end

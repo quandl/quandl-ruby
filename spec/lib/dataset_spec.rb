@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Dataset' do
   let(:dataset) { { dataset: build(:dataset, database_code: 'NSE', dataset_code: 'OIL') }.with_indifferent_access }
   let(:datasets) { { datasets: build_list(:dataset, 2) } }
@@ -63,3 +64,4 @@ describe 'Dataset' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Connection' do
   describe 'error handling' do
     let(:url) { 'databases' }
@@ -143,3 +144,4 @@ def build_quandl_error(quandl_error, message = nil)
   }
   quandl_error.to_json
 end
+# rubocop:enable Metrics/BlockLength

@@ -5,11 +5,11 @@ describe 'ModelBase' do
   let(:model) { Quandl::ModelBase.new(hash) }
 
   it 'converts data fields' do
-    expect(model.data_fields).to eq(%w(foo here))
+    expect(model.data_fields).to eq(%w[foo here])
   end
 
   it 'column names titelizes' do
-    expect(model.column_names).to eq(%w(Foo Here))
+    expect(model.column_names).to eq(%w[Foo Here])
   end
 
   it 'converts to array' do

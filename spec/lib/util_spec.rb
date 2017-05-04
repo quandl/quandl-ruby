@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Util' do
   describe 'methodize' do
     it 'creates method friendly string' do
@@ -45,3 +46,4 @@ describe 'Util' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

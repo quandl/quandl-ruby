@@ -29,7 +29,7 @@ module Quandl
     end
 
     def bulk_download_to_file(file_or_folder_path, options = {})
-      fail(QuandlError, 'You must specific a file handle or folder to write to.') if file_or_folder_path.blank?
+      raise(QuandlError, 'You must specific a file handle or folder to write to.') if file_or_folder_path.blank?
 
       # Retrieve the location of the bulk download url
       path = bulk_download_path
@@ -37,8 +37,8 @@ module Quandl
         if response.code == 302
           response.headers[:location]
         else
-          Quandl::Connection.handle_api_error(response) if response
-          fail(QuandlError, 'Unexpected result when fetching bulk download URI.')
+          Quandl::Connection.handle_api_error(response) if response && response.body
+          raise(QuandlError, 'Unexpected result when fetching bulk download URI.')
         end
       end
       uri = URI.parse(download_url)

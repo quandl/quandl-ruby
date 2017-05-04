@@ -5,6 +5,12 @@ rvm:
   - '2.1.8'
   - '2.2.4'
   - '2.3.0'
+  - '2.4.1'
+
+install:
+  - gem install rubocop
+  - bundle install
+
 script:
-  - bundle exec rubocopter --commit origin/master
-  - bundle exec rspec spec
+  - rubocop
+  - rspec spec
