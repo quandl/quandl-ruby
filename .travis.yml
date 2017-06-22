@@ -9,7 +9,7 @@ rvm:
 
 install:
   - gem install rubocop
-  - bundle install
+  - bundle update
 
 script:
   - rubocop
