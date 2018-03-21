@@ -53,7 +53,7 @@ Quandl::Dataset.get('WIKI/AAPL').data
 => ... data ...
 ```
 
-you can access the data much like you would other lists. In addition all the data column fields are mapped to their column_names for convenience:
+You can access the data much like you would other lists. In addition all the data column fields are mapped to their column_names for convenience:
 
 ```ruby
 Quandl::Dataset.get('WIKI/AAPL').data.first.date
@@ -120,7 +120,7 @@ database.data_fields
 => ["id", "name", "database_code", "description", "datasets_count", "downloads", "premium", "image"]
 ```
 
-You can then uses these methods in your code. Additionally you can access the data by using the hash equalivalent lookup.
+You can then uses these methods in your code. Additionally you can access the data by using the hash equivalent lookup.
 
 ```ruby
 database = Quandl::Database.get('WIKI')
