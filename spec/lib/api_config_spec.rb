@@ -33,7 +33,7 @@ describe Quandl::ApiConfig do
       it 'allows users to change their settings per thread' do
         3.times do
           threads << Thread.new do
-            api_key = (0...8).map { (65 + rand(26)).chr }.join
+            api_key = (0...8).map { rand(65..90).chr }.join
             Quandl::ApiConfig.api_key = api_key
             expect(Quandl::ApiConfig.api_key).to eq(api_key)
           end
@@ -44,7 +44,7 @@ describe Quandl::ApiConfig do
       end
 
       context 'with a default set' do
-        let(:default_key) { (0...8).map { (65 + rand(26)).chr }.join }
+        let(:default_key) { (0...8).map { rand(65..90).chr }.join }
 
         before(:each) do
           Quandl::ApiConfig.api_key = default_key
@@ -57,7 +57,7 @@ describe Quandl::ApiConfig do
               threads << Thread.new do
                 expect(Quandl::ApiConfig.api_key).to eq(default_key)
 
-                api_key = (0...8).map { (65 + rand(26)).chr }.join
+                api_key = (0...8).map { rand(65..90).chr }.join
                 Quandl::ApiConfig.api_key = api_key
                 expect(Quandl::ApiConfig.api_key).to eq(api_key)
               end
