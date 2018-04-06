@@ -46,9 +46,7 @@ module Quandl
       # Check that we can write to the directory
       file = file_or_folder_path
       unless file_or_folder_path.is_a?(File)
-        if File.directory?(file_or_folder_path)
-          file_or_folder_path = Pathname.new(file_or_folder_path.to_s).join(File.basename(uri.path))
-        end
+        file_or_folder_path = Pathname.new(file_or_folder_path.to_s).join(File.basename(uri.path)) if File.directory?(file_or_folder_path)
         file = File.open(file_or_folder_path, 'wb')
       end
 
