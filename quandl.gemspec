@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
     spec.add_runtime_dependency 'activesupport', '~> 4.2.8'
   end
 
-  spec.add_runtime_dependency 'json', '~> 2.1.0'
+  spec.add_runtime_dependency 'json', '>= 2.3.0'
   spec.add_runtime_dependency 'rest-client', '~> 2.0.2'
 
   spec.add_development_dependency 'factory_girl', '~> 4.5.0'
