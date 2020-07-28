@@ -10,9 +10,7 @@ describe 'Util' do
 
   describe 'convert_to_dates' do
     let(:date) { Date.new(2015, 4, 9) }
-    # rubocop:disable Style/DateTime
     let(:date_time) { DateTime.now }
-    # rubocop:enable Style/DateTime
     let(:hash) do
       {
         date.to_s => {

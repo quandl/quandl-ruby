@@ -6,6 +6,7 @@ module Quandl
 
     def self.convert_to_dates(hash)
       return hash unless hash.is_a?(Hash)
+
       hash.update(hash) do |_k, v|
         if v.is_a?(String) && v =~ /^\d{4}-\d{2}-\d{2}$/ # Date
           Date.parse(v)

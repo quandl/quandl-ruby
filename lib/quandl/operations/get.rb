@@ -10,11 +10,11 @@ module Quandl
           new(response_data[lookup_key.singularize])
         end
 
-        # rubocop:disable Style/AccessorMethodName
+        # rubocop:disable Naming/AccessorMethodName
         def get_path
           default_path
         end
-        # rubocop:enable Style/AccessorMethodName
+        # rubocop:enable Naming/AccessorMethodName
       end
     end
   end

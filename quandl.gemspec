@@ -18,12 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['test/**/*']
   spec.require_paths = ['lib']
 
-  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.2.2')
-    spec.add_runtime_dependency 'activesupport', '>= 5.2.4.3'
-  else
-    spec.add_runtime_dependency 'activesupport', '~> 4.2.8'
-  end
-
+  spec.add_runtime_dependency 'activesupport', '>= 5.2.4.3'
   spec.add_runtime_dependency 'json', '~> 2.3.0'
   spec.add_runtime_dependency 'rest-client', '~> 2.0.2'
 

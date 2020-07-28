@@ -11,6 +11,7 @@ module Quandl
 
     def more_results?
       raise(QuandlError, "#{@klass} does not support pagination yet") if !@meta.key?('total_pages') && !@meta.key?('current_page')
+
       @meta['total_pages'] > @meta['current_page']
     end
 
@@ -35,13 +36,12 @@ module Quandl
 
     private
 
-    # rubocop:disable MethodMissing
     def method_missing(method_name, *args, &block)
       return @meta[method_name.to_s] if @meta.key?(method_name.to_s)
       return @meta[*args] if method_name.to_s == '[]' && @meta.key?(args[0].to_s)
       return @values.method(method_name).call(*args, &block) if @values.respond_to?(method_name)
+
       super
     end
-    # rubocop:enable MethodMissing
   end
 end
