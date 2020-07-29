@@ -1,11 +1,12 @@
 sudo: false
 language: ruby
 rvm:
-  - '2.2.4'
-  - '2.3.0'
   - '2.4.1'
+  - '2.5.5'
+  - '2.6.3'
 
 install:
+  - gem install bundler -v '~> 1.17.3'
   - gem install rubocop
   - bundle update
 

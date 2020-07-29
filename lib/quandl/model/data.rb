@@ -29,11 +29,10 @@ module Quandl
 
     private
 
-    # rubocop:disable MethodMissing
     def method_missing(method_name, *args, &block)
       return @meta[method_name.to_s] if @meta.key?(method_name.to_s)
+
       super
     end
-    # rubocop:enable MethodMissing
   end
 end

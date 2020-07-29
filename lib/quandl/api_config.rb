@@ -2,9 +2,9 @@
 
 module Quandl
   class ApiConfig
-    API_KEY_THREAD_KEY = 'quandl_api_key'.freeze
-    API_BASE_THREAD_KEY = 'quandl_api_base'.freeze
-    API_VERSION_THREAD_KEY = 'quandl_api_version_key'.freeze
+    API_KEY_THREAD_KEY = 'quandl_api_key'
+    API_BASE_THREAD_KEY = 'quandl_api_base'
+    API_VERSION_THREAD_KEY = 'quandl_api_version_key'
 
     @api_key = nil
     @api_base = nil

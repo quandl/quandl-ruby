@@ -3,11 +3,11 @@ module Quandl
     include Quandl::Operations::Get
     include Quandl::Operations::List
 
-    # rubocop:disable Style/AccessorMethodName
+    # rubocop:disable Naming/AccessorMethodName
     def self.get_path
       default_path + '/metadata'
     end
-    # rubocop:enable Style/AccessorMethodName
+    # rubocop:enable Naming/AccessorMethodName
 
     def database
       Quandl::Database.get(database_code)

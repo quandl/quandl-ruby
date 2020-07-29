@@ -37,7 +37,7 @@ module Quandl
         if response.code == 302
           response.headers[:location]
         else
-          Quandl::Connection.handle_api_error(response) if response && response.body
+          Quandl::Connection.handle_api_error(response) if response&.body
           raise(QuandlError, 'Unexpected result when fetching bulk download URI.')
         end
       end
