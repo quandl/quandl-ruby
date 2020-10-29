@@ -1,3 +1,7 @@
+###1.2.0 - 2020-10-29
+
+* Drop support to ruby 2.4 as it reach [EOL](https://www.ruby-lang.org/en/news/2020/04/05/support-of-ruby-2-4-has-ended/).
+
 ###1.1.1 - 2020-07-28
 
 * Update gem dependencies

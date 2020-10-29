@@ -5,8 +5,9 @@ require 'quandl/version'
 Gem::Specification.new do |spec|
   spec.name          = 'quandl'
   spec.version       = Quandl::VERSION
-  spec.authors       = ['Clement Leung', 'Matthew Basset']
-  spec.email         = ['dev@quandl.com']
+  spec.author        = 'Quandl'
+  spec.email         = 'dev@quandl.com'
+  spec.required_ruby_version = '>= 2.5'
 
   spec.summary       = 'An ORM interface into the quandl api.'
   spec.description   = 'A ruby implementation of the quandl client to be used as an ORM for quandl\'s restful APIs.'
