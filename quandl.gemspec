@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rest-client', '~> 2.0.2'
 
   spec.add_development_dependency 'factory_girl', '~> 4.5.0'
+  spec.add_development_dependency 'irb'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'webmock', '~> 3.0.1'
