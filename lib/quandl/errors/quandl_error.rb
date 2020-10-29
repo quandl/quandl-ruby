@@ -1,13 +1,7 @@
 # based off of stripe gem: https://github.com/stripe/stripe-ruby
 module Quandl
   class QuandlError < StandardError
-    attr_reader :quandl_message
-    attr_reader :http_status
-    attr_reader :http_body
-    attr_reader :http_headers
-    attr_reader :request_id
-    attr_reader :json_body
-    attr_reader :quandl_error_code
+    attr_reader :quandl_message, :http_status, :http_body, :http_headers, :request_id, :json_body, :quandl_error_code
 
     # rubocop:disable Metrics/ParameterLists
     def initialize(quandl_message = nil, http_status = nil, http_body = nil, json_body = nil,

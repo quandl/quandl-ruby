@@ -1,7 +1,6 @@
 module Quandl
   class List
-    attr_reader :meta
-    attr_reader :values
+    attr_reader :meta, :values
 
     def initialize(klass, values, meta)
       @klass = klass

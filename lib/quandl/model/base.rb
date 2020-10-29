@@ -1,7 +1,7 @@
 module Quandl
   class ModelBase
     def initialize(data, _options = {})
-      @raw_data = ActiveSupport::HashWithIndifferentAccess.new(Hash[data.map { |k, v| [Quandl::Util.methodize(k), v] }])
+      @raw_data = ActiveSupport::HashWithIndifferentAccess.new(data.transform_keys { |k| Quandl::Util.methodize(k) })
     end
 
     def data_fields
