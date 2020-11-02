@@ -11,21 +11,20 @@ module Quandl
       options.assert_valid_keys(:params)
 
       url = bulk_download_path
-      url = Quandl::ApiConfig.api_base + '/' + url
+      url = "#{Quandl::ApiConfig.api_base}/#{url}"
       url = Quandl::Util.constructed_path(url, id: database_code)
 
       params = options[:params] || {}
       params['api_key'] = Quandl::ApiConfig.api_key if Quandl::ApiConfig.api_key
       params['api_version'] = Quandl::ApiConfig.api_version if Quandl::ApiConfig.api_version
 
-      url += '?' + params.to_query if params.any?
+      url += "?#{params.to_query}" if params.any?
       url
     end
 
     def bulk_download_path
-      path = self.class.default_path + '/data'
-      path = Quandl::Util.constructed_path(path, id: database_code)
-      path
+      path = "#{self.class.default_path}/data"
+      Quandl::Util.constructed_path(path, id: database_code)
     end
 
     def bulk_download_to_file(file_or_folder_path, options = {})

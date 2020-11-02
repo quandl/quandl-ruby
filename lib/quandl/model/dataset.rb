@@ -5,7 +5,7 @@ module Quandl
 
     # rubocop:disable Naming/AccessorMethodName
     def self.get_path
-      default_path + '/metadata'
+      "#{default_path}/metadata"
     end
     # rubocop:enable Naming/AccessorMethodName
 

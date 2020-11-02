@@ -8,8 +8,8 @@ module Quandl
       headers = { accept: accept_value, request_source: 'ruby', request_source_version: Quandl::VERSION }.merge(headers)
       headers = { x_api_token: ApiConfig.api_key }.merge(headers) if ApiConfig.api_key
 
-      request_url = ApiConfig.api_base + '/' + url
-      request_url = request_url + '?' + params.to_query if params.present?
+      request_url = "#{ApiConfig.api_base}/#{url}"
+      request_url = "#{request_url}?#{params.to_query}" if params.present?
 
       request_opts = { url: request_url, headers: headers, method: http_verb }
       response = execute_request(request_opts, &block)

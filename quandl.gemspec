@@ -1,12 +1,14 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'quandl/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'quandl'
   spec.version       = Quandl::VERSION
-  spec.authors       = ['Clement Leung', 'Matthew Basset']
-  spec.email         = ['dev@quandl.com']
+  spec.author        = 'Quandl'
+  spec.email         = 'dev@quandl.com'
+  spec.required_ruby_version = '>= 2.5'
 
   spec.summary       = 'An ORM interface into the quandl api.'
   spec.description   = 'A ruby implementation of the quandl client to be used as an ORM for quandl\'s restful APIs.'
@@ -23,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rest-client', '~> 2.0.2'
 
   spec.add_development_dependency 'factory_girl', '~> 4.5.0'
+  spec.add_development_dependency 'irb'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'webmock', '~> 3.0.1'

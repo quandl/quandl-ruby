@@ -21,10 +21,8 @@ describe Quandl::ApiConfig do
       end
 
       it 'should be nil if a default is not set' do
-        1.times do
-          threads << Thread.new do
-            expect(Quandl::ApiConfig.api_key).to be_nil
-          end
+        threads << Thread.new do
+          expect(Quandl::ApiConfig.api_key).to be_nil
         end
 
         threads.map(&:join)
