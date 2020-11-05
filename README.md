@@ -1,4 +1,4 @@
-# Quandl Ruby Client [![Build Status](https://travis-ci.org/quandl/quandl-ruby.svg?branch=master)](https://travis-ci.org/quandl/quandl-ruby)
+# Quandl Ruby Client [![Build Status](https://travis-ci.com/quandl/quandl-ruby.svg?branch=master)](https://travis-ci.com/quandl/quandl-ruby)
 
 The official ruby gem for all your data needs! The Quandl client can be used to interact with the latest version of the [Quandl RESTful API](https://www.quandl.com/docs/api).
 
