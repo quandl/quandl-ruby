@@ -1,3 +1,7 @@
+## Deprecated as of April 30, 2026
+
+quandl-ruby is no longer maintained. If you wish to continue to develop this code yourself, we recommend you fork it.
+
 # Quandl Ruby Client [![Build Status](https://travis-ci.com/quandl/quandl-ruby.svg?branch=master)](https://travis-ci.com/quandl/quandl-ruby)
 
 The official ruby gem for all your data needs! The Quandl client can be used to interact with the latest version of the [Quandl RESTful API](https://www.quandl.com/docs/api).
